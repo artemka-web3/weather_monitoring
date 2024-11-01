@@ -24,7 +24,7 @@ def retrieve_location_key(latitude, longitude):
         location_info = location_response.json()
         return location_info['Key']
     except Exception:
-        return render_template('home.html', error_message="Ошибка определения местоположения")
+        return render_template('index.html', error_message="Ошибка определения местоположения")
 
 # Функция для получения прогноза погоды по ключу местоположения
 def fetch_weather_forecast(loc_key):
@@ -35,12 +35,12 @@ def fetch_weather_forecast(loc_key):
             return None
         return weather_response.json()
     except Exception:
-        return render_template('home.html', error_message="Ошибка получения данных о погоде")
+        return render_template('index.html', error_message="Ошибка получения данных о погоде")
 
 # Главная страница
 @app.route('/')
 def main_page():
-    return render_template('home.html')
+    return render_template('index.html')
 
 # Маршрут для получения прогноза погоды
 @app.route('/get-forecast', methods=['POST'])
